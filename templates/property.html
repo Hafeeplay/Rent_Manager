@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="./static/property.css">
+    <title>Manage your properties</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/Admin@786Rent@786">Home</a>
+        <a href="/property">Property</a>
+        <a href="/property/{{ property_name }}/tenant_details">Tenant</a>
+        <a class="logout" href="/">Logout</a>
+    </div>
+    <h1 class="heading">Manage your properties</h1>
+
+    
+
+    <h2 class="heading">Properties Table</h2>
+    <table class="property-table">
+        <thead class="table">
+            <tr>
+                <th>PropertyName</th>
+                <th>Total Number of Houses</th>
+                <th>Present Month</th>
+                <th>Manage Tenent Rents</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for property in properties %}
+            <tr class="property-table">
+                <td>{{ property.property_name }}</td>
+                <td>{{ property.total_houses }}</td>
+                <td>{{ property.present_month }}</td>
+                <td><a href="/property/{{ property.property_name|replace(' ', '_') }}/tenant_details">Manage</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="taking">
+    <form action="/add_property" method="post">
+        <label id="propd " for="property_name">Property Name:</label>
+        <input id="propd" type="text" id="property_name" name="property_name"><br><br>
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+        <label for="total_houses">Total Number of Houses:</label>
+        <input type="text" id="total_houses" name="total_houses"><br><br>
+        <input type="submit" value="Add Property">
+    </form>
+    </div>
+</body>
+</html>

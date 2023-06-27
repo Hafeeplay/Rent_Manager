@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="./static/index.css">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <title>RENT MANAGEMENT SYSTEM</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/Admin@786Rent@786">Home</a>
+        <a href="/property">Property</a>
+        <a href="/property/{{ property_name }}/tenant_details">Tenant</a>
+        <a href="/">Logout<a>
+    </div>
+  <h1>RENT MANAGEMENT SYSTEM</h1>
+  <div>
+    <!-- Add your home screen content here (images and descriptions of homes) -->
+  </div>
+  <button onclick="window.location.href='property'">Manage Properties</button>
+</body>
+</html>
